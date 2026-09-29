@@ -81,10 +81,6 @@
   --paper: oklch(0.928 0.015 85);
 }
 
-@utility text-muted {
-  color: var(--muted-foreground);
-}
-
 @keyframes rise {
   from {
     opacity: 0;

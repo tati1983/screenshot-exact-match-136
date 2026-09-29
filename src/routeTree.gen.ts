@@ -10,12 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuscadorRouteImport } from './routes/buscador'
+import { Route as ComunidadRouteImport } from './routes/comunidad'
 import { Route as InstitucionalRouteImport } from './routes/institucional'
 import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as OrganizacionesRouteImport } from './routes/organizaciones'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuscadorRoute = BuscadorRouteImport.update({
+  id: '/buscador',
+  path: '/buscador',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComunidadRoute = ComunidadRouteImport.update({
+  id: '/comunidad',
+  path: '/comunidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InstitucionalRoute = InstitucionalRouteImport.update({
@@ -28,35 +41,71 @@ const NoticiasRoute = NoticiasRouteImport.update({
   path: '/noticias',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrganizacionesRoute = OrganizacionesRouteImport.update({
+  id: '/organizaciones',
+  path: '/organizaciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buscador': typeof BuscadorRoute
+  '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
   '/noticias': typeof NoticiasRoute
+  '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buscador': typeof BuscadorRoute
+  '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
   '/noticias': typeof NoticiasRoute
+  '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buscador': typeof BuscadorRoute
+  '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
   '/noticias': typeof NoticiasRoute
+  '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/institucional' | '/noticias'
+  fullPaths:
+    | '/'
+    | '/buscador'
+    | '/comunidad'
+    | '/institucional'
+    | '/noticias'
+    | '/organizaciones'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/institucional' | '/noticias'
-  id: '__root__' | '/' | '/institucional' | '/noticias'
+  to:
+    | '/'
+    | '/buscador'
+    | '/comunidad'
+    | '/institucional'
+    | '/noticias'
+    | '/organizaciones'
+  id:
+    | '__root__'
+    | '/'
+    | '/buscador'
+    | '/comunidad'
+    | '/institucional'
+    | '/noticias'
+    | '/organizaciones'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuscadorRoute: typeof BuscadorRoute
+  ComunidadRoute: typeof ComunidadRoute
   InstitucionalRoute: typeof InstitucionalRoute
   NoticiasRoute: typeof NoticiasRoute
+  OrganizacionesRoute: typeof OrganizacionesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +115,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buscador': {
+      id: '/buscador'
+      path: '/buscador'
+      fullPath: '/buscador'
+      preLoaderRoute: typeof BuscadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comunidad': {
+      id: '/comunidad'
+      path: '/comunidad'
+      fullPath: '/comunidad'
+      preLoaderRoute: typeof ComunidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/institucional': {
@@ -82,13 +145,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticiasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/organizaciones': {
+      id: '/organizaciones'
+      path: '/organizaciones'
+      fullPath: '/organizaciones'
+      preLoaderRoute: typeof OrganizacionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuscadorRoute: BuscadorRoute,
+  ComunidadRoute: ComunidadRoute,
   InstitucionalRoute: InstitucionalRoute,
   NoticiasRoute: NoticiasRoute,
+  OrganizacionesRoute: OrganizacionesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

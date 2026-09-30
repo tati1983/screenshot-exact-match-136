@@ -64,7 +64,7 @@ const cuerpo = (img: string) => `
 <h2>Próximos pasos</h2>
 <p>La actividad continuará en las próximas semanas. Seguí las novedades en nuestras redes.</p>`;
 
-const EJEMPLOS: Noticia[] = [
+const EJEMPLOS: Noticia[] = ([
   ["ciclo-teatro-plaza", "Ciclo de teatro en la plaza", "Funciones al aire libre con colectivos escénicos del territorio.", act1],
   ["talleres-infancias", "Talleres para infancias y adolescencias", "Formación artística y educativa abierta al barrio.", act2],
   ["feria-produccion-local", "Feria de producción local", "Organizaciones y productores de la economía regional.", act3],
@@ -72,7 +72,7 @@ const EJEMPLOS: Noticia[] = [
   ["musica-y-circo", "Ensayos abiertos de música y circo", "Jóvenes del territorio preparan su muestra anual.", sicsac2],
   ["festival-comunitario", "Festival comunitario de primavera", "Una noche de música, comida y encuentro.", sicsac3],
   ["jornada-organizaciones", "Jornada de organizaciones", "Encuentro de trabajo entre las organizaciones del ECA.", videoThumb],
-].map(([slug, titulo, extracto, imagen], i) => ({
+] as [string, string, string, string][]).map(([slug, titulo, extracto, imagen], i) => ({
   slug,
   titulo,
   extracto,

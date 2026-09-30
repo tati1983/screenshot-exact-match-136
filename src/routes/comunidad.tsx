@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/PageShell";
 import { SICSAC_DEF } from "../data/contenido";
-import { EMAIL, WHATSAPP } from "../components/SiteHeader";
+import { EMAIL, WHATSAPP } from "../lib/links";
 import sicsac1 from "../assets/sicsac-1.jpg";
 
 export const Route = createFileRoute("/comunidad")({

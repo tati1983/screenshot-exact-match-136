@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuscadorRouteImport } from './routes/buscador'
 import { Route as ComunidadRouteImport } from './routes/comunidad'
 import { Route as InstitucionalRouteImport } from './routes/institucional'
-import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as OrganizacionesRouteImport } from './routes/organizaciones'
 
 const IndexRoute = IndexRouteImport.update({
@@ -36,11 +35,6 @@ const InstitucionalRoute = InstitucionalRouteImport.update({
   path: '/institucional',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NoticiasRoute = NoticiasRouteImport.update({
-  id: '/noticias',
-  path: '/noticias',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const OrganizacionesRoute = OrganizacionesRouteImport.update({
   id: '/organizaciones',
   path: '/organizaciones',
@@ -52,7 +46,6 @@ export interface FileRoutesByFullPath {
   '/buscador': typeof BuscadorRoute
   '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
-  '/noticias': typeof NoticiasRoute
   '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRoutesByTo {
@@ -60,7 +53,6 @@ export interface FileRoutesByTo {
   '/buscador': typeof BuscadorRoute
   '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
-  '/noticias': typeof NoticiasRoute
   '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRoutesById {
@@ -69,33 +61,20 @@ export interface FileRoutesById {
   '/buscador': typeof BuscadorRoute
   '/comunidad': typeof ComunidadRoute
   '/institucional': typeof InstitucionalRoute
-  '/noticias': typeof NoticiasRoute
   '/organizaciones': typeof OrganizacionesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/buscador'
-    | '/comunidad'
-    | '/institucional'
-    | '/noticias'
-    | '/organizaciones'
+    '/' | '/buscador' | '/comunidad' | '/institucional' | '/organizaciones'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/buscador'
-    | '/comunidad'
-    | '/institucional'
-    | '/noticias'
-    | '/organizaciones'
+  to: '/' | '/buscador' | '/comunidad' | '/institucional' | '/organizaciones'
   id:
     | '__root__'
     | '/'
     | '/buscador'
     | '/comunidad'
     | '/institucional'
-    | '/noticias'
     | '/organizaciones'
   fileRoutesById: FileRoutesById
 }
@@ -104,7 +83,6 @@ export interface RootRouteChildren {
   BuscadorRoute: typeof BuscadorRoute
   ComunidadRoute: typeof ComunidadRoute
   InstitucionalRoute: typeof InstitucionalRoute
-  NoticiasRoute: typeof NoticiasRoute
   OrganizacionesRoute: typeof OrganizacionesRoute
 }
 
@@ -138,13 +116,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InstitucionalRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/noticias': {
-      id: '/noticias'
-      path: '/noticias'
-      fullPath: '/noticias'
-      preLoaderRoute: typeof NoticiasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/organizaciones': {
       id: '/organizaciones'
       path: '/organizaciones'
@@ -160,7 +131,6 @@ const rootRouteChildren: RootRouteChildren = {
   BuscadorRoute: BuscadorRoute,
   ComunidadRoute: ComunidadRoute,
   InstitucionalRoute: InstitucionalRoute,
-  NoticiasRoute: NoticiasRoute,
   OrganizacionesRoute: OrganizacionesRoute,
 }
 export const routeTree = rootRouteImport

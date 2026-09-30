@@ -1,4 +1,5 @@
-import { EMAIL, IG_URL, YT_URL } from "./SiteHeader";
+import { EMAIL, IG_URL, MAILTO, PHONE_DISPLAY, WHATSAPP, YT_URL } from "../lib/links";
+import { InstagramIcon, YoutubeIcon } from "./SocialIcons";
 
 export function SiteFooter() {
   return (
@@ -19,17 +20,12 @@ export function SiteFooter() {
           </p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <a href="tel:+5493446317963" className="transition-colors hover:text-primary">
-                +54 9 3446 317963
+              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="transition-colors hover:text-primary">
+                {PHONE_DISPLAY}
               </a>
             </li>
             <li>
-              <a href="tel:+5491126416230" className="transition-colors hover:text-primary">
-                +54 9 11 2641-6230
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${EMAIL}`} className="break-all transition-colors hover:text-primary">
+              <a href={MAILTO} className="break-all transition-colors hover:text-primary">
                 {EMAIL}
               </a>
             </li>
@@ -40,23 +36,13 @@ export function SiteFooter() {
             Seguinos
           </p>
           <div className="mt-4 flex gap-3">
-            <a
-              href={IG_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="grid size-10 place-items-center rounded-md border border-background/20 transition-colors hover:bg-background/10"
-              aria-label="Instagram"
-            >
-              <span className="font-mono text-xs">IG</span>
+            <a href={IG_URL} target="_blank" rel="noreferrer" aria-label="Instagram"
+              className="grid size-10 place-items-center rounded-md border border-background/20 transition-colors hover:bg-background/10">
+              <InstagramIcon />
             </a>
-            <a
-              href={YT_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="grid size-10 place-items-center rounded-md border border-background/20 transition-colors hover:bg-background/10"
-              aria-label="YouTube"
-            >
-              <span className="font-mono text-xs">YT</span>
+            <a href={YT_URL} target="_blank" rel="noreferrer" aria-label="YouTube"
+              className="grid size-10 place-items-center rounded-md border border-background/20 transition-colors hover:bg-background/10">
+              <YoutubeIcon />
             </a>
           </div>
         </div>

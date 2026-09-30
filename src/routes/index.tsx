@@ -6,7 +6,7 @@ import sicsac2 from "../assets/sicsac-2.jpg";
 import sicsac3 from "../assets/sicsac-3.jpg";
 import videoThumb from "../assets/video-thumb.jpg";
 import { ACTIVIDADES, DEFINICION, LINEAS, ORGANIZACIONES, SICSAC_DEF } from "../data/contenido";
-import { EMAIL, IG_URL, WHATSAPP, YT_URL } from "../components/SiteHeader";
+import { EMAIL, IG_URL, WHATSAPP, YT_URL } from "../lib/links";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,7 +75,7 @@ function Index() {
     return () => clearInterval(id);
   }, []);
 
-  const actual = CONCEPTOS[slide];
+  const actual = CONCEPTOS[slide] ?? CONCEPTOS[0]!;
 
   return (
     <main>
